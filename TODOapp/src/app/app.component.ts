@@ -1,10 +1,26 @@
 import { Component } from '@angular/core';
-
+import { Tarefa } from "./tarefa";
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+ selector: 'app-root',
+ templateUrl: './app.component.html',
+ styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'TODOapp';
+ title = 'TODOapp';
+ arrayDeTarefas: Tarefa[] = [];
+ constructor() {
+ this.READ_tarefas();
+ }
+ CREATE_tarefa(descricaoNovaTarefa: string) {
+ var novaTarefa = new Tarefa(descricaoNovaTarefa, false);
+ this.arrayDeTarefas.unshift(novaTarefa);
+ }
+ READ_tarefas() {
+ this.arrayDeTarefas = [
+ new Tarefa("Arthur Sampaio Teodosio 224227", false),
+ new Tarefa("Estudar Frameworks WEB", false),
+ new Tarefa("Comer Pizza", false),
+ new Tarefa("Ajudar meus pais", false)
+ ];
+ }
 }
